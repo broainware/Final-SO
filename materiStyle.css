@@ -1,0 +1,930 @@
+/* ------------------------------------------------------
+   GOOGLE FONTS
+------------------------------------------------------ */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+/* ------------------------------------------------------
+   CSS VARIABLES (LIGHT MODE DEFAULT)
+------------------------------------------------------ */
+:root[data-theme="light"] {
+  --text: #0d1b2a;
+  --text-alt: #1b263b;
+  --bg: #f5f7ff;
+  --card-bg: rgba(255, 255, 255, 0.75);
+  --glass-bg: rgba(255, 255, 255, 0.35);
+  --primary: #002a76;
+  --light-border: rgba(0, 0, 0, 0);
+  --shadow: rgba(0, 0, 0, 0.15);
+}
+
+/* ------------------------------------------------------
+   DARK MODE (OTOMATIS BERDASARKAN SISTEM)
+------------------------------------------------------ */
+@media (prefers-color-scheme: dark) {
+  :root[data-theme="dark"] {
+    --text: #ffffff;
+    --text-alt: #dbe9ff;
+    --bg: #03204a;
+    --card-bg: rgba(255, 255, 255, 0.08);
+    --glass-bg: rgba(255, 255, 255, 0.08);
+    --primary: #002a76;
+    --light-border: rgba(255, 255, 255, 0);
+    --shadow: rgba(0, 0, 0, 0.4);
+  }
+}
+
+/* ------------------------------------------------------
+   RESET
+------------------------------------------------------ */
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  overflow-x: hidden;
+}
+
+/* ------------------------------------------------------
+   BACKGROUND ANIMATION
+------------------------------------------------------ */
+.bg-animation {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(-45deg, #03204a, #002a76, #000000);
+  background-size: 400% 400%;
+  animation: gradientMove 12s ease infinite;
+  z-index: -10;
+}
+@keyframes gradientMove {
+  0% {
+    background-position: 0 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}
+
+/* ------------------------------------------------------
+   SIDEBAR
+------------------------------------------------------ */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -260px;
+  width: 260px;
+  height: 100vh;
+  padding: 30px 20px;
+  transform: translateX(-100%);
+  backdrop-filter: blur(15px);
+  background: var(--glass-bg);
+  border-right: 1px solid var(--shadow);
+  box-shadow: 4px 0 15px var(--shadow);
+  transition: 0.35s ease-in-out;
+  z-index: 20;
+}
+.sidebar.open {
+  left: 0;
+  transform: translateX(0);
+}
+
+/* TOMBOL TUTUP SIDEBAR BARU */
+.sidebar-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 28px;
+  color: var(--text-alt);
+  transition: 0.3s;
+}
+
+.sidebar-close:hover {
+  color: var(--primary);
+  transform: scale(1.1);
+}
+
+.side-title {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 22px;
+  color: var(--text);
+  letter-spacing: 2px;
+}
+
+.side-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 15px;
+  margin-bottom: 8px;
+  color: var(--text-alt);
+  text-decoration: none;
+  border-radius: 8px;
+  transition: 0.25s;
+}
+.side-link:hover,
+.side-link.active {
+  background: var(--glass-bg);
+  transform: scale(1.03);
+}
+
+.side-nav {
+  display: flex;
+  flex-direction: column;
+}
+
+/* TOGGLE BUTTON */
+.toggle-btn {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(6px);
+  border: none;
+  padding: 10px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 22px;
+  color: var(--text);
+  z-index: 30;
+  transition: 0.3s;
+}
+.toggle-btn:hover {
+  transform: scale(1.1);
+}
+.toggle-btn svg {
+  display: block;
+}
+
+/*THEME BUTTON*/
+.theme-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: var(--glass-bg);
+  border: none;
+  padding: 10px 14px;
+  border-radius: 12px;
+  backdrop-filter: blur(6px);
+  cursor: pointer;
+  font-size: 22px;
+  color: var(--text);
+  z-index: 100;
+  transition: 0.3s;
+}
+.theme-btn:hover {
+  transform: scale(1.1);
+}
+/* TAMBAH: Gaya untuk Ikon SVG di Theme Toggle */
+.theme-btn svg {
+  display: none; /* Sembunyikan semua SVG secara default */
+  width: 24px;
+  height: 24px;
+}
+
+/* Aturan untuk ikon Bulan (indeks 0 - Mode Gelap) */
+.theme-btn svg:first-child {
+  display: block;
+}
+
+/* Aturan untuk ikon Matahari (indeks 1 - Mode Terang) */
+.theme-btn svg:last-child {
+  display: none;
+}
+
+/* Saat Dark Mode AKTIF (kelas ditambahkan oleh JS) */
+.theme-btn.dark-mode-active svg:first-child {
+  display: none; /* Sembunyikan Bulan */
+}
+.theme-btn.dark-mode-active svg:last-child {
+  display: block; /* Tampilkan Matahari */
+}
+
+/* ------------------------------------------------------
+   HERO
+------------------------------------------------------ */
+.hero {
+  padding: 120px 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.hero-card {
+  display: flex;
+  gap: 40px;
+  color: var(--text);
+  background: var(--card-bg);
+  padding: 50px;
+  border-radius: 20px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 0 25px var(--shadow);
+  max-width: 1000px;
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.hero-text {
+  order: 1;
+  flex: 1;
+  color: var(--text-alt);
+}
+
+@keyframes floatCard {
+  from {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.title {
+  font-size: 55px;
+  font-weight: 700;
+  letter-spacing: 8px;
+  background: linear-gradient(to right, var(--text-alt), var(--primary));
+  -webkit-background-clip: text;
+}
+
+.subtitle {
+  margin-top: -30px;
+  font-size: 40px;
+  background: linear-gradient(to right, var(--text-alt), var(--primary));
+  -webkit-background-clip: text;
+  transition: 0.3 ease;
+}
+
+.desc {
+  color: var(--text-alt);
+  line-height: 1.7;
+  margin-top: 10px;
+}
+
+/* HERO IMAGE */
+.hero-img {
+  order: 2;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+.hero-img img {
+  width: 100%;
+  max-width: 350px;
+  height: auto;
+  animation: floatImg 4s ease-in-out infinite;
+}
+@keyframes floatImg {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* ------------------------------------------------------
+   MATERI CONTENT STYLES
+------------------------------------------------------ */
+.materi-content {
+  /* Padding atas dan bawah untuk memastikan konten tidak tertutup header */
+  padding: 100px 20px;
+  min-height: 100vh;
+  text-align: center;
+}
+
+.materi-card {
+  /* Menggunakan gaya seperti glassmorphism untuk konten utama */
+  max-width: 1000px;
+  margin: 0 auto;
+  background: var(--card-bg);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px var(--shadow);
+  backdrop-filter: blur(10px);
+}
+
+.materi-card article {
+  /* Pembatas antar bab */
+  margin-bottom: 40px;
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(13, 27, 42, 0.1);
+}
+
+/* Penyesuaian border untuk mode gelap */
+:root[data-theme="dark"] .materi-card article {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.materi-card h2,
+.materi-card h3 {
+  color: var(--text); /* Judul menggunakan warna utama */
+  margin-top: 0;
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.materi-card p {
+  color: var(--text-alt); /* Teks paragraf menggunakan warna sekunder */
+  line-height: 1.7;
+  text-align: left;
+}
+
+.materi-card ul,
+.materi-card ol {
+  color: var(--text-alt);
+  padding-left: 25px;
+  text-align: left;
+}
+.materi-card ul li,
+.materi-card ol li {
+  margin-bottom: 8px;
+  text-align: left;
+}
+
+.materi-card strong {
+  color: var(--text); /* Penekanan menggunakan warna teks utama */
+  font-weight: 600;
+}
+
+/* CODE STYLES (untuk tag <pre><code>) */
+.materi-card pre {
+  background: var(--text-alt);
+  color: var(--bg); /* Teks terang di latar belakang gelap */
+  padding: 15px;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin: 20px 0;
+  text-align: left;
+}
+.materi-card pre code {
+  display: block;
+}
+
+/* ------------------------------------------------------
+   SVG DIAGRAM STYLES (Agar Diagram Interaktif & Theme-Aware)
+------------------------------------------------------ */
+.diagram-container {
+  display: block;
+  text-align: center;
+  margin: 30px 0;
+  padding: 20px;
+  background: var(--glass-bg);
+  border-radius: 10px;
+  box-shadow: 0 2px 10px var(--shadow);
+}
+
+.diagram-svg {
+  display: block;
+  margin: 0 auto;
+}
+
+/* Styling untuk Node (kotak, lingkaran) */
+.diagram-svg .node {
+  fill: var(--card-bg); /* Isi node */
+  stroke: var(--primary); /* Garis luar node */
+  stroke-width: 2;
+  transition: all 0.3s;
+}
+
+/* Styling untuk Teks di dalam Node */
+.diagram-svg .label {
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  fill: var(--text); /* Warna teks utama */
+  font-weight: 500;
+}
+
+/* Styling untuk Panah dan Garis */
+.diagram-svg .arrow,
+.diagram-svg line {
+  stroke: var(--text-alt); /* Warna panah/garis */
+  stroke-width: 2;
+  /* Anda perlu menambahkan elemen <marker> di dalam SVG untuk tampilan panah yang tepat */
+}
+
+.diagram-container figcaption {
+  margin-top: 15px;
+  color: var(--text-alt);
+  font-style: italic;
+  font-size: 0.9em;
+}
+
+/* Penyesuaian spesifik untuk diagram deadlock dan race condition (opsional) */
+#diagram-race .node,
+#diagram-deadlock .node {
+  stroke-width: 3; /* Lebih tebal untuk penekanan */
+}
+
+/* BUTTON GROUP */
+.btn-group {
+  display: flex;
+  gap: 20px;
+  margin-top: 30px;
+}
+.btn {
+  padding: 12px 30px;
+  background: var(--text);
+  color: var(--bg);
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+  box-shadow: 0 0 12px var(--shadow);
+}
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 18px var(--shadow);
+}
+
+/* ------------------------------------------------------
+   VIDEO SECTION STYLES
+------------------------------------------------------ */
+.video-wrapper {
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.video-wrapper h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.video-carousel {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden; /* Penting: menyembunyikan slide yang tidak aktif */
+  border-radius: 15px;
+  box-shadow: 0 10px 30px var(--shadow);
+  display: flex;
+  align-items: center; /* Untuk menengahkan tombol navigasi */
+}
+
+.video-slide {
+  width: 100%; /* Setiap slide mengambil 100% lebar carousel */
+  flex-shrink: 0;
+  padding: 30px;
+  margin: 0;
+  box-sizing: border-box;
+  text-align: left;
+  display: none; /* Default: Sembunyikan semua */
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out;
+  /* Menerapkan gaya kartu theme-aware */
+  background: var(--card-bg);
+}
+
+.video-slide.active {
+  display: block; /* Tampilkan slide yang aktif */
+  opacity: 1;
+}
+
+.video-slide h3 {
+  color: var(--text);
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+/* Teknik Aspect Ratio 16:9 untuk Iframe */
+.video-frame {
+  position: relative;
+  padding-top: 56.25%; /* 9/16 * 100% */
+  background: black;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-top: 20px;
+}
+
+.video-frame iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* Navigation Buttons */
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--primary);
+  color: var(--bg);
+  border: none;
+  padding: 12px;
+  cursor: pointer;
+  z-index: 10;
+  border-radius: 50%;
+  box-shadow: 0 2px 10px var(--shadow);
+  transition: background-color 0.3s, transform 0.3s, opacity 0.3s;
+}
+
+.carousel-btn:hover:not(:disabled) {
+  /* Asumsi --primary-hover ada, jika tidak, bisa diganti dengan warna solid */
+  background: color-mix(in srgb, var(--primary) 90%, black);
+  transform: translateY(-50%) scale(1.05);
+}
+
+.carousel-btn:disabled {
+  background: var(--text-alt);
+  opacity: 0.3;
+  cursor: not-allowed;
+  transform: translateY(-50%) scale(1);
+}
+
+.prev-btn {
+  left: -20px; /* Posisi di luar sedikit */
+}
+
+.next-btn {
+  right: -20px; /* Posisi di luar sedikit */
+}
+
+/* Responsive adjustment for buttons */
+@media (max-width: 768px) {
+  .prev-btn {
+    left: 10px;
+  }
+  .next-btn {
+    right: 10px;
+  }
+}
+
+.video-note {
+  margin-top: 15px;
+  font-size: 0.9em;
+  background: linear-gradient(to right, #fff, #c7d9ff);
+  -webkit-background-clip: text;
+  color: transparent;
+  text-align: center;
+}
+
+/* ------------------------------------------------------
+   FOOTER
+------------------------------------------------------ */
+.footer {
+  padding: 40px 20px;
+  background: var(--glass-bg);
+  border-top: 1px solid var(--light-border);
+  text-align: center;
+}
+
+.footer p {
+  margin: 0 0 20px;
+  color: var(--text-alt);
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.footer-links a {
+  color: var(--text-alt);
+  font-size: 24px;
+  transition: 0.3s;
+}
+
+.footer-links a:hover {
+  color: var(--bg);
+  transform: scale(1.2);
+}
+
+/*-------------------------------------------------------
+FLOATING BUBBLES & SMALL GLOW PARTICLES
+-------------------------------------------------------*/
+/* FLOATING BUBBLES */
+.bubble {
+  position: fixed;
+  bottom: -100px;
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 50%;
+  animation: bubbleFloat 12s linear infinite;
+  pointer-events: none;
+  filter: blur(1px);
+}
+
+@keyframes bubbleFloat {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(-110vh) scale(1.5);
+    opacity: 0;
+  }
+}
+
+/* RANDOM SMALL GLOW PARTICLES */
+.particle {
+  position: fixed;
+  width: 6px;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  filter: blur(2px);
+  animation: blink 4s infinite ease-in-out;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 0.1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+.decor {
+  position: fixed;
+  width: 280px;
+  height: 280px;
+  border-radius: 30px;
+  transform: rotate(25deg);
+  opacity: 0.12;
+  filter: blur(12px);
+  z-index: -5;
+  pointer-events: none;
+}
+
+.decor-left {
+  background: #00c0ff;
+  top: 20%;
+  left: -120px;
+}
+.decor-right {
+  background: #0070ff;
+  bottom: 15%;
+  right: -120px;
+}
+
+/* ------------------------------------------------------
+   RESPONSIVE DESIGN 
+   (100% MOBILE & TABLET FRIENDLY)
+------------------------------------------------------ */
+@media (max-width: 800px) {
+  .hero-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 30px;
+  }
+
+  .hero-content {
+    flex-direction: column;
+    text-align: center;
+  }
+  .hero-text {
+    order: 1;
+  }
+  .hero-img {
+    order: 2;
+  }
+  .title {
+    font-size: 40px;
+  }
+  .subtitle {
+    font-size: 25px;
+    margin-top: -10px;
+  }
+  .btn-group {
+    flex-direction: column;
+  }
+  .hero-img img {
+    max-width: 250px;
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero {
+    padding: 80px 20px;
+  }
+  .title {
+    font-size: 32px;
+  }
+  .subtitle {
+    font-size: 20px;
+  }
+  .desc {
+    font-size: 14px;
+  }
+  .toggle-btn {
+    left: 10px;
+    top: 10px;
+  }
+  .sidebar {
+    width: 200px;
+    left: -200px;
+  }
+}
+
+/* ========== SKIP BUTTONS (HEADER + MAIN + VIDEO) ========== */
+
+/* HERO (header) quick buttons — absolute di dalam header */
+.hero {
+  position: relative; /* konteks untuk .hero-skip-wrap */
+}
+.hero-skip-wrap {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 120;
+  transition: opacity 220ms ease, transform 220ms ease, visibility 220ms;
+}
+
+/* Sticky wrappers for main & video (appear when section visible) */
+.main-skip-wrap,
+.video-skip-wrap {
+  position: sticky;
+  top: 12px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  z-index: 100;
+  margin: 0 auto 12px auto;
+  max-width: 1100px;
+  transition: opacity 220ms ease, transform 220ms ease, visibility 220ms;
+}
+
+/* Default hidden state for wrappers (JS/Observer toggles this) */
+.section-skip-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-6px);
+}
+
+/* Tombol umum */
+.section-skip-btn {
+  display: inline-block;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: var(--card-bg);
+  color: var(--text);
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.18);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, opacity 0.2s;
+  border: 2px solid transparent;
+}
+
+/* Tombol ukuran kecil (sticky wrappers) */
+.section-skip-btn.small {
+  padding: 8px 12px;
+  font-size: 14px;
+  border-radius: 8px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+/* Help Bubble */
+#help-bubble {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 52px;
+  height: 52px;
+  background-color: #0a276d;
+  color: #ffffff;
+  font-size: 30px;
+  font-weight: 700;
+  border-radius: 50%;
+  box-shadow: 0 5px 14px rgba(10, 39, 109, 0.7);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  font-family: 'Poppins', sans-serif;
+  z-index: 10010;
+}
+#help-bubble:hover,
+#help-bubble:focus {
+  background-color: #143c9a;
+  transform: scale(1.15);
+  outline: none;
+}
+
+/* Help Popup */
+#help-popup {
+  position: fixed;
+  bottom: 90px;
+  right: 30px;
+  width: 320px;
+  background-color: #0a276d;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(10, 39, 109, 0.85);
+  padding: 28px 28px 32px 28px;
+  color: #cee1ff;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+  z-index: 10020;
+}
+#help-popup.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Close Button */
+#help-close {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  background: transparent;
+  border: none;
+  color: #bdd9ff;
+  font-size: 24px;
+  cursor: pointer;
+  transition: color 0.25s ease;
+  font-weight: 700;
+}
+#help-close:hover,
+#help-close:focus {
+  color: #ffffff;
+  outline: none;
+}
+
+/* Heading */
+#help-popup h3 {
+  margin-top: 0;
+  margin-bottom: 18px;
+  font-weight: 600;
+  font-size: 1.3rem;
+  letter-spacing: 0.05em;
+  text-shadow: 0 0 4px rgba(255,255,255,0.2);
+}
+
+/* List style */
+#help-popup ul {
+  padding-left: 20px;
+  margin: 0;
+}
+#help-popup ul li {
+  margin-bottom: 12px;
+  list-style-type: disc;
+  color: #cddff8;
+}
+
+/* Hover & focus */
+.section-skip-btn:hover,
+.section-skip-btn:focus {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+  outline: none;
+}
+
+/* Jika butuh tombol header lebih kecil di mobile */
+@media (max-width: 700px) {
+  .hero-skip-wrap {
+    top: 10px;
+    gap: 8px;
+    transform: translateX(-50%);
+  }
+  .section-skip-btn.small {
+    padding: 7px 10px;
+    font-size: 13px;
+  }
+}
+
+/* smooth scroll */
+html {
+  scroll-behavior: smooth;
+}

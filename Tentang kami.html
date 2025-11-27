@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tentang Kami - Simulasi Konkruensi</title>
+    <link rel="stylesheet" href="Tentang kami.css"> <!-- Menggunakan style.css gabungan -->
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
+</head>
+<body>
+
+    <!-- ANIMATED BACKGROUND (dari beranda) -->
+    <div class="bg-animation"></div>
+    <div class="decor decor-left"></div>
+    <div class="decor decor-right"></div>
+
+    <!-- SIDEBAR (dari beranda) -->
+    <aside id="sidebar" class="sidebar">
+        <h2 class="side-title">MENU</h2>
+
+        <a href="index.html" class="side-link"> <!-- Ganti dengan nama file beranda Anda -->
+            <i class='bx bx-home'></i> Beranda
+        </a>
+        <a href="materi.html" class="side-link">
+            <i class='bx bx-book'></i> Materi
+        </a>
+        <a href="simulasi.html" class="side-link">
+            <i class='bx bx-cog'></i> Simulasi
+        </a>
+        <a href="Tentang kami.html" class="side-link active">
+            <i class='bx bx-info-circle'></i> Tentang Kami
+        </a>
+    </aside>
+
+    <!-- TOGGLE BUTTON (dari beranda) -->
+    <button id="toggleBtn" class="toggle-btn">
+        <i class='bx bx-menu'></i>
+    </button>
+    
+    <!-- MAIN CONTENT: 3 FULL-SCREEN SECTIONS -->
+    <main class="scroll-container">
+        <!-- SECTION 1: FOTO BERSAMA KELOMPOK -->
+    <section class="section section-1 fade-up">
+        <div class="slideshow-bg">
+            <div class="slides-container">
+                <div class="slide" style="background-image: url('kelompok1.jpg');"></div>
+                <div class="slide" style="background-image: url('kelompok2.jpg');"></div>
+                <div class="slide" style="background-image: url('kelompok3.jpg');"></div>
+            </div>
+            <button class="slide-btn prev-btn" id="prevBtn">&lt;</button>
+            <button class="slide-btn next-btn" id="nextBtn">&gt;</button>
+        </div>
+        <div class="section-content fade-up"> 
+            <h1 class="section-title">Kelompok 5 - Sistem Operasi</h1>
+            <p class="section-desc">Tim di balik Simulasi Manajemen Proses Konkruensi</p>
+        </div>
+         <!-- TAMBAHKAN TOMBOL DI SINI -->
+        <div class="hero-buttons fade-up">
+            <a href="#section-2" class="btn">FAQ</a>
+            <a href="#section-3" class="btn">Profil Kami</a>
+        </div>
+    </section>
+
+        <!-- SECTION 2: FAQ -->
+        <section id="section-2" class="section section-2">
+            <div class="container">
+                <h2 class="section-title">FAQ</h2>
+                <p class="section-desc">Temukan jawaban atas pertanyaan umum tentang Simulasi Manajemen Proses Konkruensi.</p>
+                
+                <div class="faq-accordion">
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>Apa itu Simulasi Konkruensi?</span>
+                            <i class='bx bx-chevron-down'></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Simulasi Konkruensi adalah alat interaktif yang dirancang untuk membantu memahami konsep proses konkuren dalam sistem operasi. Ini mencakup eksekusi sequential vs concurrent, serta visualisasi precedence graph.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>Bagaimana cara menggunakan simulasi ini?</span>
+                            <i class='bx bx-chevron-down'></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Pilih opsi simulasi dari menu, masukkan parameter proses, dan jalankan simulasi. Anda dapat melihat hasil eksekusi secara real-time dengan visualisasi yang mudah dipahami.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>Apa perbedaan antara eksekusi sequential dan concurrent?</span>
+                            <i class='bx bx-chevron-down'></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Eksekusi sequential berarti proses berjalan satu per satu secara berurutan, sedangkan concurrent memungkinkan beberapa proses berjalan secara bersamaan, meningkatkan efisiensi sistem.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>Apa itu precedence graph?</span>
+                            <i class='bx bx-chevron-down'></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Precedence graph adalah representasi grafis yang menunjukkan dependensi antar proses. Ini membantu dalam memahami urutan eksekusi dan potensi deadlock.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>Apakah saya bisa mengubah atau menghapus proses yang sudah saya input?</span>
+                            <i class='bx bx-chevron-down'></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Ya, proses yang sudah ditambahkan biasanya dapat diedit atau dihapus melalui daftar proses sebelum simulasi dijalankan. Anda dapat memperbaiki nama, durasi, atau relasi ketergantungan jika terjadi kesalahan input.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>Apakah data proses saya disimpan oleh sistem?</span>
+                            <i class='bx bx-chevron-down'></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Tidak. Semua data proses yang Anda masukkan hanya digunakan selama sesi simulasi dan tidak disimpan oleh sistem, kecuali jika fitur penyimpanan dihadirkan di versi mendatang. </p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>Bisakah saya mengunduh hasil simulasi atau grafiknya?</span>
+                            <i class='bx bx-chevron-down'></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Untuk saat ini, fitur unduhan mungkin belum tersedia. Namun Anda dapat mengambil screenshot atau menunggu fitur ekspor jika ditambahkan pada pembaruan berikutnya.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- SECTION 3: PROFIL KITA -->
+        <section id="section-3" class="section section-3">
+            <div class="container">
+                <h2 class="section-title">Profil Kami</h2>
+                <div class="team-cards">
+                    <div class="team-card">
+                        <img class="team-photo" src="aini.png" alt="Anggota 1">
+                        <h4>Aini Nurfadilah</h4>
+                        <p class="npm">NPM : 247006111021 </p>
+                        <!-- Tombol IG -->
+                        <a href="https://www.instagram.com/anfdlha" target="_blank" rel="noopener noreferrer" 
+                            class="ig-link" title="Instagram Aini">
+                            <i class='bx bxl-instagram' style="font-size: 22px; "></i>
+                        </a>
+                    </div>
+                    <div class="team-card">
+                        <img class="team-photo" src="dara.png" alt="Anggota 2">
+                        <h4>Dara Adzkia</h4>
+                        <p class="npm">NPM : 247006111023</p>
+                        <!-- Tombol IG -->
+                        <a href="https://www.instagram.com/dardzk" target="_blank" rel="noopener noreferrer" 
+                            class="ig-link" title="Instagram Dara">
+                            <i class='bx bxl-instagram' style="font-size: 22px;"></i>
+                        </a>
+                    </div>
+                    <div class="team-card">
+                        <img class="team-photo" src="rina.jpg" alt="Anggota 3">
+                        <h4>Rina Natalia</h4>
+                        <p class="npm">NPM : 247006111033</p>
+                        <!-- Tombol IG -->
+                        <a href="https://www.instagram.com/rinaant_" target="_blank" rel="noopener noreferrer" 
+                            class="ig-link" title="Instagram Rina">
+                            <i class='bx bxl-instagram' style="font-size: 22px;"></i>
+                        </a>
+                    </div>
+                    <div class="team-card">
+                        <img class="team-photo" src="anggi.jpg" alt="Anggota 4">
+                        <h4>Anggi Salsabila</h4>
+                        <p class="npm">NPM : 247006111038</p>
+                        <!-- Tombol IG -->
+                        <a href="https://www.instagram.com/slsbilaa_635?igsh=MXRiZGttYm1qMmlweQ==" target="_blank" rel="noopener noreferrer" 
+                            class="ig-link" title="Instagram Anggi">
+                            <i class='bx bxl-instagram' style="font-size: 22px;"></i>
+                        </a>
+                    </div>
+                    <div class="team-card">
+                        <img class="team-photo" src="nayla.jpg" alt="Anggota 5">
+                        <h4>Nayla Qurrota. A</h4>
+                        <p class="npm">NPM : 247006111043</p>
+                        <!-- Tombol IG -->
+                        <a href="https://www.instagram.com/nayla.qa" target="_blank" rel="noopener noreferrer" 
+                            class="ig-link" title="Instagram Nayla">
+                            <i class='bx bxl-instagram' style="font-size: 22px;"></i>
+                        </a>
+                    </div>
+                    <div class="team-card">
+                        <img class="team-photo" src="faisal.jpg" alt="Anggota 6">
+                        <h4>Faisal Hadi Saik</h4>
+                        <p class="npm">NPM : 247006111052</p>
+                        <!-- Tombol IG -->
+                        <a href="https://www.instagram.com/faisal_lorentz" target="_blank" rel="noopener noreferrer" 
+                            class="ig-link" title="Instagram Faisal">
+                            <i class='bx bxl-instagram' style="font-size: 22px;"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER (dari beranda) -->
+    <footer class="footer">
+        <p>&copy; 2025 Simulasi Manajemen Konkruensi. Dibuat oleh kelompok 5 mata kuliah Sistem Operasi.</p>
+        <div class="footer-links">
+            <a href="#"><i class='bx bxl-facebook'></i></a>
+            <a href="#"><i class='bx bxl-twitter'></i></a>
+            <a href="#"><i class='bx bxl-github'></i></a>
+        </div>
+    </footer>
+
+        <!-- Help Bubble -->
+    <div id="help-bubble" aria-label="Tombol bantuan" role="button" tabindex="0">?</div>
+
+    <!-- Help Popup -->
+    <div id="help-popup" role="dialog" aria-modal="true" aria-labelledby="help-title" aria-hidden="true">
+    <button id="help-close" aria-label="Tutup bantuan">&times;</button>
+    <h3 id="help-title">Cara Memulai Simulasi</h3>
+    <ul>
+        <li>Buka halaman simulasi.</li>
+        <li>Masukkan nama proses dan durasinya.</li>
+        <li>(Opsional) Tambahkan dependency antar proses.</li>
+        <li>Klik Tambahkan Proses.</li>
+        <li>Jika semua proses sudah benar, klik Mulai Simulasi.</li>
+    </ul>
+    </div>
+
+<script src="Tentang kami.js"></script> <!-- Menggunakan JS terpisah -->
+</body>
+</html>

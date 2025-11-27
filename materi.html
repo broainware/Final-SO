@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="light" dir="ltr">
+  <head>
+    <!-- CHARSET -->
+    <meta charset="UTF-8" />
+
+    <!-- RESPONSIVE -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- TITLE -->
+    <title>Pemahaman Materi Konkurensi — Simulasi Manajemen Proses</title>
+
+    <!-- PERFORMANCE: PRECONNECT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://www.youtube.com" />
+
+    <!-- STYLE UTAMA -->
+    <link rel="stylesheet" href="materiStyle.css" />
+
+    <!-- ICON LIBRARY -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+    />
+  </head>
+  <body>
+    <!-- ANIMATED BACKGROUND -->
+    <div class="bg-animation" aria-hidden="true"></div>
+
+    <!--DECORATION-->
+    <div class="decor decor-left" aria-hidden="true"></div>
+    <div class="decor decor-right" aria-hidden="true"></div>
+
+    <!-- SIDEBAR -->
+    <aside
+      id="sidebar"
+      class="sidebar"
+      role="navigation"
+      aria-label="Menu Navigasi Utama"
+      aria-hidden="true"
+    >
+      <button
+        id="closeSidebar"
+        class="sidebar-close"
+        aria-label="Tutup Menu Navigasi"
+        aria-controls="sidebar"
+      >
+        <i class="bx bx-x"></i>
+      </button>
+      <h2 class="side-title">MENU</h2>
+
+      <nav class="side-nav">
+        <a href="index.html" class="side-link">
+          <i class="bx bx-home"></i> Beranda
+        </a>
+        <a href="materi.html" class="side-link active">
+          <i class="bx bx-book"></i> Materi
+        </a>
+        <a href="simulasi.html" class="side-link">
+          <i class="bx bx-cog"></i> Simulasi
+        </a>
+        <a href="Tentang kami.html" class="side-link">
+          <i class="bx bx-info-circle"></i> Tentang Kami
+        </a>
+      </nav>
+    </aside>
+
+    <!-- TOGGLE BUTTON -->
+    <button
+      id="toggleBtn"
+      class="toggle-btn"
+      aria-label="Buka Menu navigasi"
+      aria-controls="sidebar"
+      aria-expanded="false"
+    >
+      <svg
+        class="icon"
+        viewBox="0 0 24 24"
+        width="24"
+        height="24"
+        aria-hidden="true"
+      >
+        <path
+          d="M3 6h18M3 12h18M3 18h18"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+        />
+      </svg>
+      <!-- Ganti-->
+    </button>
+
+    <!-- TOGGLE THEME BUTTON -->
+    <button
+      id="themeToggle"
+      class="theme-btn"
+      aria-label="Aktifkan Mode Gelap"
+      aria-pressed="false"
+    >
+      <svg
+        class="icon"
+        viewBox="0 0 24 24"
+        width="24"
+        height="24"
+        aria-hidden="true"
+      >
+        <path
+          d="M21 12.79A9 9 0 0 1 11.21 3 7 7 0 1 0 12 21a9 9 0 0 0 9-8.21z"
+          fill="currentColor"
+        />
+      </svg>
+      <svg
+        class="icon"
+        viewBox="0 0 24 24"
+        width="24"
+        height="24"
+        aria-hidden="true"
+      >
+        <circle
+          cx="12"
+          cy="12"
+          r="5"
+          stroke="currentColor"
+          stroke-width="2"
+          fill="none"
+        />
+        <path
+          d="M12 1v2M12 21v2M4.22 4.22L5.64 5.64M18.36 18.36l1.42 1.42
+              M1 12h2M21 12h2M4.22 19.78L5.64 18.36M18.36 5.64l1.42-1.42"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+        />
+      </svg>
+      <!-- Ganti-->
+    </button>
+
+    <!-- HERO CONTENT -->
+    <header class="hero" role="banner" aria-labelledby="heroTitle">
+      <!-- HEADER QUICK BUTTONS (tampil saat halaman pertama, hilang saat scroll) -->
+      <div class="hero-skip-wrap" aria-hidden="false">
+        <a href="#mainContent" class="section-skip-btn" id="heroToMain"
+          >Materi Utama</a
+        >
+        <a href="#video-section" class="section-skip-btn" id="heroToVideo"
+          >Video Pembelajaran</a
+        >
+      </div>
+
+      <div class="hero-card">
+        <div class="hero-content">
+          <div class="hero-text">
+            <h1 class="title floating">MATERI</h1>
+            <h2 class="subtitle">
+              MANAJEMEN PROSES & KONKURENSI SISTEM OPERASI
+            </h2>
+            <p class="desc">
+              Pelajari konsep dasar manajemen proses dan konkurensi dalam sistem
+              operasi, mulai dari pengantar hingga contoh praktis. Materi ini
+              menjadi landasan sebelum masuk ke simulasi interaktif.
+            </p>
+          </div>
+          <div class="hero-img">
+            <img
+              src="img/illustration.png"
+              alt="Ilustrasi materi konkurensi dalam sistem operasi"
+              loading="lazy"
+              decoding="async"
+              fetchpriority="low"
+            />
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Buttons above main (sticky; muncul saat main terlihat) -->
+    <div class="main-skip-wrap section-skip-hidden" aria-hidden="true">
+      <a href="#mainContent" class="section-skip-btn small" id="btnMainTop"
+        >Ke Materi</a
+      >
+      <a
+        href="#video-section"
+        class="section-skip-btn small"
+        id="btnMainToVideo"
+        >Ke Video</a
+      >
+    </div>
+
+    <!-- MATERI CONTENT SECTION -->
+    <main id="mainContent" class="materi-content" role="main">
+      <section
+        id="materi-section"
+        class="container"
+        aria-label="Materi Konkurensi Sistem Operasi"
+      >
+        <div class="materi-card" data-theme-element="card">
+          <article id="bab1" data-theme-element="article">
+            <h2>1. Pengantar Manajemen Proses & Konkurensi</h2>
+            <p>
+              Dalam sistem operasi, proses adalah program yang sedang
+              dieksekusi. Setiap proses memerlukan sumber daya seperti CPU,
+              memori, file, dan akses input/output. Agar komputer dapat
+              menjalankan berbagai tugas dalam waktu bersamaan, sistem operasi
+              menerapkan konkurensi (concurrency).
+            </p>
+            <p>
+              Konkurensi adalah kemampuan sistem untuk mengeksekusi beberapa
+              proses secara overlapping dalam satu rentang waktu. Bahkan pada
+              sistem dengan satu CPU, konkurensi dapat terjadi melalui context
+              switching, sementara pada sistem multi-core, konkurensi dapat
+              benar-benar berjalan paralel (parallelism).<br />
+              Konkurensi diperlukan untuk:
+            </p>
+            <ul>
+              <li>Meningkatkan throughput dan efisiensi CPU.</li>
+              <li>Mempercepat penyelesaian tugas.</li>
+              <li>Memungkinkan pengalaman multitasking.</li>
+              <li>
+                Mendukung sistem modern seperti web server, database, dan
+                aplikasi real-time.
+              </li>
+            </ul>
+          </article>
+          <article id="bab2" data-theme-element="article">
+            <h2>2. Eksekusi Sequential vs Concurrent</h2>
+            <h3>a. Eksekusi Sequential</h3>
+            <p>
+              Dalam eksekusi sequential, proses dijalankan satu per satu secara
+              berurutan. Proses berikutnya hanya dapat berjalan setelah proses
+              sebelumnya selesai.
+            </p>
+            <p><strong>Kelebihan:</strong></p>
+            <ul>
+              <li>Lebih mudah dianalisis.</li>
+              <li>Tidak mengalami race condition.</li>
+            </ul>
+            <p><strong>Kekurangan:</strong></p>
+            <ul>
+              <li>Lambat karena tidak memanfaatkan potensi paralel.</li>
+            </ul>
+            <p>
+              <strong>Contoh:</strong> P1 → P2 → P3 → P4<br />Total waktu =
+              jumlah seluruh durasi proses.
+            </p>
+            <figure class="diagram-container">
+              <svg
+                class="diagram-svg"
+                id="diagram-sequential"
+                viewBox="0 0 650 160"
+                width="100%"
+              >
+                <!-- P1 -->
+                <rect
+                  x="40"
+                  y="40"
+                  width="150"
+                  height="60"
+                  rx="10"
+                  class="node"
+                />
+                <text x="115" y="75" text-anchor="middle" class="label">
+                  P1
+                </text>
+
+                <!-- Arrow -->
+                <line x1="190" y1="70" x2="240" y2="70" class="arrow" />
+
+                <!-- P2 -->
+                <rect
+                  x="240"
+                  y="40"
+                  width="150"
+                  height="60"
+                  rx="10"
+                  class="node"
+                />
+                <text x="315" y="75" text-anchor="middle" class="label">
+                  P2
+                </text>
+
+                <line x1="390" y1="70" x2="440" y2="70" class="arrow" />
+
+                <!-- P3 -->
+                <rect
+                  x="440"
+                  y="40"
+                  width="150"
+                  height="60"
+                  rx="10"
+                  class="node"
+                />
+                <text x="515" y="75" text-anchor="middle" class="label">
+                  P3
+                </text>
+              </svg>
+              <figcaption>
+                Gambar 1. Eksekusi proses secara sequential.
+              </figcaption>
+            </figure>
+            <h3>b. Eksekusi Concurrent</h3>
+            <p>
+              Dalam concurrent execution, beberapa proses dapat berjalan dalam
+              waktu yang sama. Sistem dapat membagi CPU ke beberapa proses, atau
+              menjalankannya paralel pada beberapa core.
+            </p>
+            <p><strong>Kelebihan:</strong></p>
+            <ul>
+              <li>Waktu penyelesaian lebih cepat.</li>
+              <li>Memanfaatkan CPU multi-core.</li>
+              <li>Cocok untuk proses independen.</li>
+            </ul>
+            <p>
+              <strong>Contoh:</strong><br />P1: |------|<br />P2:
+              &nbsp;&nbsp;|---------|<br />P3: &nbsp;&nbsp;&nbsp;&nbsp;|---|<br />Total
+              waktu = durasi proses terlama pada kelompok paralel.
+            </p>
+            <figure class="diagram-container">
+              <svg
+                class="diagram-svg"
+                id="diagram-concurrent"
+                viewBox="0 0 650 200"
+                width="100%"
+              >
+                <!-- Timeline P1 -->
+                <rect
+                  x="40"
+                  y="40"
+                  width="240"
+                  height="40"
+                  rx="8"
+                  class="node"
+                />
+                <text x="160" y="65" text-anchor="middle" class="label">
+                  P1
+                </text>
+
+                <!-- Timeline P2 -->
+                <rect
+                  x="160"
+                  y="100"
+                  width="260"
+                  height="40"
+                  rx="8"
+                  class="node"
+                />
+                <text x="290" y="125" text-anchor="middle" class="label">
+                  P2
+                </text>
+
+                <!-- Timeline P3 -->
+                <rect
+                  x="320"
+                  y="160"
+                  width="220"
+                  height="40"
+                  rx="8"
+                  class="node"
+                />
+                <text x="430" y="185" text-anchor="middle" class="label">
+                  P3
+                </text>
+              </svg>
+              <figcaption>
+                Gambar 2. Eksekusi proses secara concurrent.
+              </figcaption>
+            </figure>
+            <h3>c. Hubungan dengan Thread</h3>
+            <p>
+              Thread adalah unit eksekusi terkecil dalam proses. Dalam simulasi
+              ini, setiap proses dapat dianggap sebagai thread yang memiliki:
+            </p>
+            <ul>
+              <li>Nama proses.</li>
+              <li>Durasi eksekusi.</li>
+              <li>Relasi ketergantungan (opsional).</li>
+            </ul>
+            <p>
+              Thread-thread ini dijalankan menggunakan model paralel sehingga
+              menghasilkan simulasi konkurensi yang lebih realistis.
+            </p>
+          </article>
+          <article id="bab3" data-theme-element="article">
+            <h2>3. Race Condition & Sinkronisasi</h2>
+            <p>
+              Konkurensi membuka peluang race condition, yaitu kondisi ketika
+              dua atau lebih proses mengakses dan memodifikasi data bersama
+              secara bersamaan sehingga hasilnya tidak dapat diprediksi.
+            </p>
+            <p>
+              <strong>Contoh:</strong> Dua proses meng-update variabel counter
+              secara konkuren → hasil akhir bisa salah.
+            </p>
+            <p>Untuk mencegah race condition, sistem menggunakan:</p>
+            <ul>
+              <li>
+                Mutual Exclusion (Mutex) — hanya satu proses boleh mengakses
+                sumber daya dalam satu waktu.
+              </li>
+              <li>Semaphore — mekanisme sinkronisasi berbasis counter.</li>
+              <li>
+                Monitor — abstraksi yang mengelola akses metode secara
+                eksklusif.
+              </li>
+            </ul>
+            <p>
+              Meskipun simulasi web kalian tidak memodelkan mutex, memahami
+              konsep ini penting sebagai landasan teori.
+            </p>
+            <figure class="diagram-container">
+              <svg
+                class="diagram-svg"
+                id="diagram-race"
+                viewBox="0 0 700 260"
+                width="100%"
+              >
+                <!-- Shared Variable -->
+                <rect
+                  x="280"
+                  y="30"
+                  width="140"
+                  height="60"
+                  rx="10"
+                  class="node"
+                />
+                <text x="350" y="65" text-anchor="middle" class="label">
+                  Shared X
+                </text>
+
+                <!-- P1 -->
+                <rect
+                  x="40"
+                  y="140"
+                  width="180"
+                  height="50"
+                  rx="10"
+                  class="node"
+                />
+                <text x="130" y="170" text-anchor="middle" class="label">
+                  Process 1
+                </text>
+
+                <!-- P2 -->
+                <rect
+                  x="480"
+                  y="140"
+                  width="180"
+                  height="50"
+                  rx="10"
+                  class="node"
+                />
+                <text x="570" y="170" text-anchor="middle" class="label">
+                  Process 2
+                </text>
+
+                <!-- Arrows -->
+                <line x1="220" y1="165" x2="280" y2="65" class="arrow" />
+                <line x1="480" y1="165" x2="420" y2="65" class="arrow" />
+              </svg>
+              <figcaption>Gambar 3. Ilustrasi race condition.</figcaption>
+            </figure>
+          </article>
+          <article id="bab4" data-theme-element="article">
+            <h2>4. Deadlock dan Starvation</h2>
+            <h3>a. Deadlock</h3>
+            <p>
+              Deadlock terjadi ketika dua atau lebih proses saling menunggu
+              resource yang dimiliki proses lain, sehingga tidak ada satupun
+              yang dapat melanjutkan eksekusi.
+            </p>
+            <p><strong>Empat kondisi deadlock:</strong></p>
+            <ol>
+              <li>Mutual exclusion.</li>
+              <li>Hold and wait.</li>
+              <li>No preemption.</li>
+              <li>Circular wait.</li>
+            </ol>
+
+            <p><strong>Solusi:</strong></p>
+            <ul>
+              <li>
+                <strong>Prevention:</strong> Menanggalkan salah satu dari empat
+                kondisi deadlock.
+              </li>
+              <li>
+                <strong>Detection & Recovery:</strong> Mendeteksi dan
+                membatalkan salah satu proses.
+              </li>
+              <li>
+                <strong>Avoidance:</strong> Menggunakan algoritma seperti
+                Banker's algorithm.
+              </li>
+            </ul>
+            <figure class="diagram-container">
+              <svg
+                class="diagram-svg"
+                id="diagram-deadlock"
+                viewBox="0 0 700 260"
+                width="100%"
+              >
+                <!-- Process P1 -->
+                <circle cx="150" cy="130" r="40" class="node" />
+                <text x="150" y="135" text-anchor="middle" class="label">
+                  P1
+                </text>
+
+                <!-- Resource R1 -->
+                <rect
+                  x="300"
+                  y="60"
+                  width="100"
+                  height="60"
+                  rx="8"
+                  class="node"
+                />
+                <text x="350" y="95" text-anchor="middle" class="label">
+                  R1
+                </text>
+
+                <!-- Resource R2 -->
+                <rect
+                  x="300"
+                  y="160"
+                  width="100"
+                  height="60"
+                  rx="8"
+                  class="node"
+                />
+                <text x="350" y="195" text-anchor="middle" class="label">
+                  R2
+                </text>
+
+                <!-- Process P2 -->
+                <circle cx="550" cy="130" r="40" class="node" />
+                <text x="550" y="135" text-anchor="middle" class="label">
+                  P2
+                </text>
+
+                <!-- Arrows -->
+                <line x1="190" y1="130" x2="300" y2="90" class="arrow" />
+                <line x1="350" y1="160" x2="510" y2="130" class="arrow" />
+                <line x1="510" y1="130" x2="400" y2="90" class="arrow" />
+                <line x1="300" y1="190" x2="190" y2="130" class="arrow" />
+              </svg>
+              <figcaption>Gambar 4. Contoh deadlock.</figcaption>
+            </figure>
+            <h3>b. Starvation</h3>
+            <p>
+              Starvation terjadi ketika proses berprioritas rendah tidak pernah
+              mendapatkan jatah eksekusi karena digantikan terus oleh proses
+              yang lebih tinggi.
+            </p>
+            <p><strong>Solusi:</strong></p>
+            <ul>
+              <li>Aging (prioritas proses naik seiring waktu).</li>
+              <li>Fair scheduling (mis. Round Robin).</li>
+            </ul>
+          </article>
+          <article id="bab5" data-theme-element="article">
+            <h2>5. Parbegin–Parend Constructs</h2>
+            <h3>a. Pengertian</h3>
+            <ul>
+              <li>parbegin → menandai awal blok konkuren.</li>
+              <li>parend → menandai akhir blok konkuren.</li>
+            </ul>
+            <p>
+              Semua proses di dalam parbegin–parend akan dieksekusi secara
+              bersamaan. Eksekusi program lanjut hanya setelah seluruh proses
+              dalam blok selesai.
+            </p>
+            <h3>b. Bentuk Umum</h3>
+            <pre><code>
+    parbegin
+      S1
+      S2
+      S3
+    parend</code></pre>
+            <h3>c. Perilaku Eksekusi</h3>
+            <ul>
+              <li>S1, S2, S3 dieksekusi parallel.</li>
+              <li>Total waktu = waktu proses terlama.</li>
+            </ul>
+            <p>Struktur ini sangat cocok untuk simulasi karena:</p>
+            <ul>
+              <li>Mudah divisualisasikan.</li>
+              <li>Dapat dihitung perbedaan sequential vs concurrent.</li>
+              <li>Sesuai dengan konsep multithreading sederhana.</li>
+            </ul>
+            <figure class="diagram-container">
+              <svg
+                class="diagram-svg"
+                id="diagram-parbegin"
+                viewBox="0 0 700 260"
+                width="100%"
+              >
+                <text x="350" y="40" text-anchor="middle" class="label">
+                  parbegin
+                </text>
+
+                <!-- Task S1 -->
+                <rect
+                  x="100"
+                  y="80"
+                  width="140"
+                  height="60"
+                  rx="10"
+                  class="node"
+                />
+                <text x="170" y="115" text-anchor="middle" class="label">
+                  S1
+                </text>
+
+                <!-- Task S2 -->
+                <rect
+                  x="280"
+                  y="80"
+                  width="140"
+                  height="60"
+                  rx="10"
+                  class="node"
+                />
+                <text x="350" y="115" text-anchor="middle" class="label">
+                  S2
+                </text>
+
+                <!-- Task S3 -->
+                <rect
+                  x="460"
+                  y="80"
+                  width="140"
+                  height="60"
+                  rx="10"
+                  class="node"
+                />
+                <text x="530" y="115" text-anchor="middle" class="label">
+                  S3
+                </text>
+
+                <text x="350" y="200" text-anchor="middle" class="label">
+                  parend
+                </text>
+              </svg>
+              <figcaption>
+                Gambar 5. Diagram struktur eksekusi paralel pada
+                parbegin–parend.
+              </figcaption>
+            </figure>
+          </article>
+          <article id="bab6" data-theme-element="article">
+            <h2>6. Fork–Join Constructs</h2>
+            <p>
+              Struktur ini mirip dengan parbegin–parend namun lebih rendah
+              levelnya.
+            </p>
+            <h3>a. Fork</h3>
+            <p>Menghasilkan dua atau lebih cabang eksekusi paralel.</p>
+            <h3>b. Join</h3>
+            <p>
+              Menggabungkan kembali proses-proses yang telah berjalan paralel.
+            </p>
+            <h3>c. Contoh</h3>
+            <pre><code>
+      count := 2
+      fork L1
+      S1
+      goto L2
+
+      L1: S2
+      goto L2
+
+      L2: join count
+      S3</code></pre>
+            <figure class="diagram-container">
+              <svg
+                class="diagram-svg"
+                id="diagram-forkjoin"
+                viewBox="0 0 700 260"
+                width="100%"
+              >
+                <!-- S1 -->
+                <rect
+                  x="300"
+                  y="20"
+                  width="100"
+                  height="50"
+                  rx="10"
+                  class="node"
+                />
+                <text x="350" y="50" text-anchor="middle" class="label">
+                  S1
+                </text>
+
+                <!-- Fork -->
+                <line x1="350" y1="70" x2="200" y2="140" class="arrow" />
+                <line x1="350" y1="70" x2="500" y2="140" class="arrow" />
+                <text x="350" y="95" text-anchor="middle" class="label">
+                  fork
+                </text>
+
+                <!-- S2 -->
+                <rect
+                  x="150"
+                  y="140"
+                  width="100"
+                  height="50"
+                  rx="10"
+                  class="node"
+                />
+                <text x="200" y="170" text-anchor="middle" class="label">
+                  S2
+                </text>
+
+                <!-- S3 -->
+                <rect
+                  x="450"
+                  y="140"
+                  width="100"
+                  height="50"
+                  rx="10"
+                  class="node"
+                />
+                <text x="500" y="170" text-anchor="middle" class="label">
+                  S3
+                </text>
+
+                <!-- Join -->
+                <line x1="200" y1="190" x2="350" y2="240" class="arrow" />
+                <line x1="500" y1="190" x2="350" y2="240" class="arrow" />
+                <text x="350" y="225" text-anchor="middle" class="label">
+                  join
+                </text>
+              </svg>
+              <figcaption>
+                Gambar 6. Diagram cabang paralel dengan mekanisme fork–join.
+              </figcaption>
+            </figure>
+          </article>
+          <article id="bab7" data-theme-element="article">
+            <h2>7. Precedence Graph (Graf Ketergantungan)</h2>
+            <h3>a. Definisi</h3>
+            <ul>
+              <li>Node = proses (misal S1, S2).</li>
+              <li>
+                Edge = ketergantungan (S1 → S3 berarti S3 menunggu S1 selesai).
+              </li>
+            </ul>
+            <h3>b. Fungsi</h3>
+            <ul>
+              <li>Menentukan urutan eksekusi yang valid.</li>
+              <li>Mengetahui proses mana yang bisa berjalan paralel.</li>
+              <li>
+                Sinkronisasi otomatis berdasarkan hubungan ketergantungan.
+              </li>
+            </ul>
+            <h3>c. Contoh</h3>
+            <p>S1 → S3<br />S2 → S3<br />S3 → S4</p>
+            <p><strong>Interpretasi:</strong></p>
+            <ul>
+              <li>S1 dan S2 dapat dijalankan paralel.</li>
+              <li>S3 menunggu keduanya.</li>
+              <li>S4 menunggu S3.</li>
+            </ul>
+            <figure class="diagram-container">
+              <svg
+                class="diagram-svg"
+                id="diagram-precedence"
+                viewBox="0 0 700 280"
+                width="100%"
+              >
+                <!-- S1 -->
+                <rect
+                  x="300"
+                  y="20"
+                  width="100"
+                  height="50"
+                  rx="12"
+                  class="node"
+                />
+                <text x="350" y="50" text-anchor="middle" class="label">
+                  S1
+                </text>
+
+                <!-- S2 & S3 -->
+                <rect
+                  x="150"
+                  y="110"
+                  width="100"
+                  height="50"
+                  rx="12"
+                  class="node"
+                />
+                <text x="200" y="140" text-anchor="middle" class="label">
+                  S2
+                </text>
+
+                <rect
+                  x="450"
+                  y="110"
+                  width="100"
+                  height="50"
+                  rx="12"
+                  class="node"
+                />
+                <text x="500" y="140" text-anchor="middle" class="label">
+                  S3
+                </text>
+
+                <!-- S4 -->
+                <rect
+                  x="300"
+                  y="200"
+                  width="100"
+                  height="50"
+                  rx="12"
+                  class="node"
+                />
+                <text x="350" y="230" text-anchor="middle" class="label">
+                  S4
+                </text>
+
+                <!-- Arrows -->
+                <line x1="350" y1="70" x2="200" y2="110" class="arrow" />
+                <line x1="350" y1="70" x2="500" y2="110" class="arrow" />
+                <line x1="200" y1="160" x2="350" y2="200" class="arrow" />
+                <line x1="500" y1="160" x2="350" y2="200" class="arrow" />
+              </svg>
+              <figcaption>
+                Gambar 7. Precedence graph menunjukkan ketergantungan antar
+                proses.
+              </figcaption>
+            </figure>
+          </article>
+          <article id="bab8" data-theme-element="article">
+            <h2>8. Contoh: Perbandingan Sequential dan Concurrent</h2>
+            <p><strong>Input:</strong></p>
+            <ul>
+              <li>P1 = 4 detik</li>
+              <li>P2 = 2 detik</li>
+              <li>P3 = 3 detik</li>
+              <li>P4 = 1 detik</li>
+              <li>Dependensi: P3 menunggu P1 & P2</li>
+              <li>P4 tidak memiliki dependensi</li>
+            </ul>
+            <p>
+              <strong>Sequential Execution:</strong><br />P1 → P2 → P3 → P4<br />Total
+              waktu: 4 + 2 + 3 + 1 = 10 detik
+            </p>
+            <p><strong>Concurrent Execution:</strong></p>
+            <ul>
+              <li>P1 dan P2 → paralel (4 detik)</li>
+              <li>Setelah selesai, P3 jalan (3 detik)</li>
+              <li>P4 bisa jalan kapan saja (1 detik)</li>
+            </ul>
+            <p>
+              Layer 1: P1 (4s), P2 (2s)<br />Layer 2: P3 (3s)<br />Layer 3: P4
+              (1s)<br />Total waktu = 4 + 3 = 7 detik
+            </p>
+            <p><strong>Hasil:</strong></p>
+            <ul>
+              <li>
+                Eksekusi paralel lebih cepat karena memanfaatkan concurrency.
+              </li>
+              <li>
+                Semakin banyak proses independen, semakin besar peningkatan
+                performa.
+              </li>
+            </ul>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <!-- VIDEO SECTION -->
+    <section
+      id="video-section"
+      class="video-wrapper"
+      aria-labelledby="videoSectionTitle"
+    >
+      <!-- Buttons above video (sticky; muncul saat video section terlihat) -->
+      <div class="video-skip-wrap section-skip-hidden" aria-hidden="true">
+        <a href="#video-section" class="section-skip-btn small" id="btnVideoTop"
+          >Ke Video</a
+        >
+        <a
+          href="#mainContent"
+          class="section-skip-btn small"
+          id="btnVideoToMain"
+          >Ke Materi</a
+        >
+      </div>
+
+      <h2 id="videoSectionTitle">
+        Video Pembelajaran: Konkurensi dalam Sistem Operasi
+      </h2>
+      <div
+        class="video-carousel"
+        role="region"
+        aria-roledescription="carousel"
+        aria-live="polite"
+        aria-label="Carousel Video Konkurensi"
+      >
+        <figure
+          class="video-slide active"
+          data-theme-element="card"
+          role="group"
+          aria-label="Video 1 dari 3"
+        >
+          <h3>Pengantar Konkurensi</h3>
+          <div class="video-frame">
+            <iframe
+              src="https://www.youtube.com/embed/DRVdsg0C7jQ?si=S2gPyKo20btgzoE2"
+              title="Pengantar Konkurensi"
+              loading="lazy"
+              referrerpolicy="no-referer"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </figure>
+        <figure
+          class="video-slide"
+          data-theme-element="card"
+          role="group"
+          aria-label="Video 2 dari 3"
+        >
+          <h3>Race Condition & Sinkronisasi</h3>
+          <div class="video-frame">
+            <iframe
+              src="https://www.youtube.com/embed/pIX2KgM5s_U?si=QCp9PAZ6AlEZUFnB"
+              title="Race Condition & Sinkronisasi"
+              loading="lazy"
+              referrerpolicy="no-referer"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </figure>
+        <figure
+          class="video-slide"
+          data-theme-element="card"
+          role="group"
+          aria-label="Video 3 dari 3"
+        >
+          <h3>Deadlock dan Solusinya</h3>
+          <div class="video-frame">
+            <iframe
+              src="https://www.youtube.com/embed/TiWpUgva0Zo?si=c9f_ELHL7DgMAhsF"
+              title="Deadlock dan Solusinya"
+              loading="lazy"
+              referrerpolicy="no-referer"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </figure>
+        <!-- NAV BUTTONS -->
+        <button
+          class="carousel-btn prev-btn"
+          id="prevBtn"
+          aria-label="Sebelumnya"
+        >
+          <svg
+            class="icon"
+            viewBox="0 0 24 24"
+            width="28"
+            height="28"
+            aria-hidden="true"
+          >
+            <path
+              d="M15 18l-6-6 6-6"
+              stroke="currentColor"
+              stroke-width="2"
+              fill="none"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </button>
+
+        <button
+          class="carousel-btn next-btn"
+          id="nextBtn"
+          aria-label="Selanjutnya"
+        >
+          <svg
+            class="icon"
+            viewBox="0 0 24 24"
+            width="28"
+            height="28"
+            aria-hidden="true"
+          >
+            <path
+              d="M9 6l6 6-6 6"
+              stroke="currentColor"
+              stroke-width="2"
+              fill="none"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </button>
+      </div>
+    </section>
+    <p class="video-note">
+      Video ini menjelaskan konsep konkurensi secara visual. Geser dengan panah
+      untuk melihat video lainnya. Jika video tidak muncul, pastikan koneksi
+      internet stabil.
+    </p>
+
+    <!-- FOOTER -->
+    <footer class="footer" data-theme-element="footer" role="contentinfo">
+      <div class="footer-content container">
+        <p>
+          &copy; 2025 Simulasi Manajemen Konkruensi<br />
+          Dibuat oleh Kelompok 5 – Mata Kuliah Sistem Operasi
+        </p>
+
+        <nav class="footer-links" aria-label="Media Sosial">
+          <a href="#" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
+              <path
+                fill="currentColor"
+                d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 5 
+                  3.66 9.13 8.44 9.88v-6.99h-2.54V12h2.54V9.8
+                  c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.23.2 2.23.2v2.46h-1.26
+                  c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99
+                  C18.34 21.13 22 17 22 12z"
+              />
+            </svg>
+          </a>
+
+          <a href="#" aria-label="Twitter">
+            <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
+              <path
+                fill="currentColor"
+                d="M22.46 6c-.77.35-1.6.58-2.46.69a4.26 4.26 0 0 0 
+                  1.88-2.35 8.28 8.28 0 0 1-2.68 1.02A4.13 4.13 0 0 0 
+                  15.5 4c-2.27 0-4.1 1.9-4.1 4.24 0 .33.03.65.1.96A11.75 
+                  11.75 0 0 1 3.15 5.1a4.33 4.33 0 0 0-.55 2.13c0 
+                  1.47.72 2.78 1.82 3.55-.67-.02-1.3-.22-1.85-.52v.05c0 
+                  2.05 1.41 3.73 3.27 4.12-.34.1-.72.16-1.12.16-.27 
+                  0-.54-.03-.8-.08.54 1.78 2.1 3.08 3.95 3.11A8.33 8.33 
+                  0 0 1 2 19.54 11.7 11.7 0 0 0 8.29 21c7.55 0 11.68-6.5 
+                  11.68-12.13 0-.2-.01-.41-.02-.61A8.5 8.5 0 0 0 22.46 6z"
+              />
+            </svg>
+          </a>
+
+          <a href="#" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
+              <path
+                fill="currentColor"
+                d="M12 2C6.48 2 2 6.58 2 12.26c0 4.51 2.87 8.33 6.84 
+                  9.69.5.1.68-.22.68-.48v-1.7c-2.78.62-3.36-1.37-3.36-1.37
+                  -.46-1.19-1.12-1.51-1.12-1.51-.9-.63.07-.62.07-.62 
+                  1 .07 1.54 1.06 1.54 1.06.9 1.57 2.36 1.12 2.94.86.09-.67.35-1.12.63-1.38
+                  -2.22-.26-4.55-1.15-4.55-5.14 0-1.14.39-2.07 1.03-2.8-.1
+                  -.26-.45-1.3.1-2.7 0 0 .84-.28 2.75 1.06A9.3 
+                  9.3 0 0 1 12 6.8c.85.01 1.7.12 2.5.36 1.9-1.34 2.74-1.06 
+                  2.74-1.06.55 1.4.21 2.44.1 2.7.64.73 1.02 1.66 1.02 2.8 
+                  0 3.99-2.34 4.87-4.57 5.12.36.32.69.94.69 1.9v2.82c0 
+                  .26.18.59.69.48A10.04 10.04 0 0 0 22 12.26C22 6.58 17.52 
+                  2 12 2z"
+              />
+            </svg>
+          </a>
+        </nav>
+      </div>
+    </footer>
+
+    <!-- Help Bubble -->
+<div id="help-bubble" aria-label="Tombol bantuan" role="button" tabindex="0">?</div>
+
+<!-- Help Popup -->
+<div id="help-popup" role="dialog" aria-modal="true" aria-labelledby="help-title" aria-hidden="true">
+  <button id="help-close" aria-label="Tutup bantuan">&times;</button>
+  <h3 id="help-title">Cara Memulai Simulasi</h3>
+  <ul>
+    <li>Buka halaman simulasi.</li>
+    <li>Masukkan nama proses dan durasinya.</li>
+    <li>(Opsional) Tambahkan dependency antar proses.</li>
+    <li>Klik Tambahkan Proses.</li>
+    <li>Jika semua proses sudah benar, klik Mulai Simulasi.</li>
+  </ul>
+</div>
+
+    <script src="materiScript.js" defer></script>
+  </body>
+</html>

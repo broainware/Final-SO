@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mode Manual - Simulasi Proses Konkruensi</title>
+    <link rel="stylesheet" href="simulasi.css">
+    <link rel="stylesheet" href="animasi.css">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
+
+    <script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+</head>
+<body>
+
+    
+    <!-- ANIMATED BACKGROUND -->
+    <div class="bg-animation"></div>
+    <div class="decor decor-left"></div>
+    <div class="decor decor-right"></div>
+
+    <!-- SIDEBAR -->
+    <aside id="navigasi" class="navigasi">
+        <h2 class="side-title">MENU</h2>
+
+        <a href="index.html" class="side-link">
+            <i class='bx bx-home'></i> Beranda
+        </a>
+        <a href="materi.html" class="side-link">
+            <i class='bx bx-book'></i> Materi
+        </a>
+        <a href="simulasi.html" class="side-link active">
+            <i class='bx bx-cog'></i> Simulasi
+        </a>
+        <a href="Tentang kami.html" class="side-link">
+            <i class='bx bx-info-circle'></i> Tentang Kami
+        </a>
+    </aside>
+
+    <!-- TOGGLE BUTTON -->
+    <button id="toggleBtn" class="toggle-btn">
+        <i class='bx bx-menu'></i>
+    </button>
+
+
+    <div class="container">
+        <header class="header">
+            <h1 class="title">Simulasi Manajemen Proses Konkruensi</h1>
+            <p class="subtitle">Mode Manual - Visualisasi Precedence Graph dengan Deteksi Deadlock</p>
+            <button class="btn-back" onclick="window.location.href='index.html'">← Kembali ke Beranda</button>
+        </header>
+
+        <div class="tabs">
+            <button class="tab-btn" onclick="window.location.href='statement-mode.html'">
+                Input Statement
+            </button>
+
+            <button class="tab-btn active" onclick="window.location.href='manual-mode.html'">
+                Input Interaktif
+            </button>
+        </div>
+
+
+
+        <div id="deadlock-alert" class="alert alert-error" style="display: none;">
+            <strong>⚠ Deadlock Terdeteksi!</strong>
+            <p id="deadlock-message"></p>
+        </div>
+
+        <div class="main-content">
+            <div class="sidebar">
+                <div class="card">
+                    <h3>Tambah Proses</h3>
+                    <form id="process-form">
+                        <div class="form-group">
+                            <label for="process-name">Nama Proses</label>
+                            <input type="text" id="process-name" placeholder="Contoh: Process A" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Dependensi</label>
+                            <div id="dependencies-list" class="checkbox-group">
+                                <p class="text-muted">Belum ada proses lain</p>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Tambah Proses</button>
+                    </form>
+                </div>
+
+                <div class="card">
+                    <h3>Daftar Proses</h3>
+                    <div id="process-list" class="process-list">
+                        <p class="text-muted">Belum ada proses</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>Kontrol Simulasi</h3>
+                    <div class="controls">
+                        <button id="start-btn" class="btn btn-success btn-block" disabled>
+                            ▶ Mulai
+                        </button>
+                        <button id="pause-btn" class="btn btn-warning btn-block" style="display: none;">
+                            ⏸ Pause
+                        </button>
+                        <button id="reset-btn" class="btn btn-secondary btn-block">
+                            ↻ Reset
+                        </button>
+                        <div class="form-group">
+                            <label for="speed-slider">Kecepatan: <span id="speed-value">1.0x</span></label>
+                            <input type="range" id="speed-slider" min="0.5" max="3" step="0.5" value="1" class="slider">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>Status Legend</h3>
+                    <div class="legend">
+                        <div class="legend-item">
+                            <span class="status-dot waiting"></span>
+                            <span>Waiting</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="status-dot ready"></span>
+                            <span>Ready</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="status-dot running"></span>
+                            <span>Running</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="status-dot completed"></span>
+                            <span>Completed</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="graph-container">
+                <div class="card">
+                    <h3>Precedence Graph</h3>
+                    <div id="graph" class="graph"></div>
+                </div>
+            </div>
+                <div class="card">
+                    <h3>CPU & Antrian Proses</h3>
+                    <p><strong>CPU:</strong> <span id="cpu-running">-</span></p>
+                    <p><strong>Ready Queue:</strong> <span id="ready-queue">-</span></p>
+                    <p><strong>Waiting Reason:</strong></p>
+                    <ul id="waiting-reason"></ul>
+                </div>
+        </div>
+        </div>
+    </div>
+     <!-- FOOTER -->
+        <footer class="footer">
+            <p>&copy; 2025 Simulasi Manajemen Konkruensi. Dibuat oleh kelompok 5  mata kuliah Sistem Operasi.</p>
+            <div class="footer-links">
+                <a href="#"><i class='bx bxl-facebook'></i></a>
+                <a href="#"><i class='bx bxl-twitter'></i></a>
+                <a href="#"><i class='bx bxl-github'></i></a>
+            </div>
+        </footer>
+
+        <!-- Help Bubble -->
+<div id="help-bubble" aria-label="Tombol bantuan" role="button" tabindex="0">?</div>
+
+<!-- Help Popup -->
+<div id="help-popup" role="dialog" aria-modal="true" aria-labelledby="help-title" aria-hidden="true">
+  <button id="help-close" aria-label="Tutup bantuan">&times;</button>
+  <h3 id="help-title">Cara Memulai Simulasi</h3>
+  <ul>
+    <li>Buka halaman simulasi.</li>
+    <li>Masukkan nama proses dan durasinya.</li>
+    <li>(Opsional) Tambahkan dependency antar proses.</li>
+    <li>Klik Tambahkan Proses.</li>
+    <li>Jika semua proses sudah benar, klik Mulai Simulasi.</li>
+  </ul>
+</div>
+
+    <script src="deadlock.js"></script>
+    <script src="graph.js"></script>
+    <script src="simulator.js"></script>
+    <script src="manual-mode.js"></script>
+    <script src="animasi.js"></script>
+</body>
+</html>

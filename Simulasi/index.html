@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulasi Manajemen Proses Konkruensi</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="animasi.css">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
+</head>
+<body>
+
+    <!-- ANIMATED BACKGROUND -->
+    <div class="bg-animation"></div>
+    <div class="decor decor-left"></div>
+    <div class="decor decor-right"></div>
+
+    <!-- SIDEBAR -->
+    <aside id="navigasi" class="navigasi">
+        <h2 class="side-title">MENU</h2>
+
+        <a href="#" class="side-link active">
+            <i class='bx bx-home'></i> Beranda
+        </a>
+        <a href="#" class="side-link">
+            <i class='bx bx-book'></i> Materi
+        </a>
+        <a href="#" class="side-link">
+            <i class='bx bx-cog'></i> Simulasi
+        </a>
+        <a href="#" class="side-link">
+            <i class='bx bx-info-circle'></i> Tentang Kami
+        </a>
+    </aside>
+
+    <!-- TOGGLE BUTTON -->
+    <button id="toggleBtn" class="toggle-btn">
+        <i class='bx bx-menu'></i>
+    </button>
+
+
+    <div class="container">
+        <header class="header">
+            <h1 class="title">Simulasi Manajemen Proses Konkruensi</h1>
+            <p class="subtitle">Visualisasi Precedence Graph dengan Deteksi Deadlock</p>
+            <p class="description">
+                Pilih mode simulasi yang sesuai dengan kebutuhan Anda. Tersedia dua mode: 
+                Mode Manual untuk input proses secara manual, dan Mode Statement untuk input 
+                statement operasi dengan deteksi dependensi otomatis.
+            </p>
+        </header>
+
+        <div class="cards-container">
+            <div class="card" onclick="window.location.href='manual-mode.html'">
+                <div class="card-icon manual-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M18 11V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v0"></path>
+                        <path d="M14 10V4a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v2"></path>
+                        <path d="M10 10.5V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v8"></path>
+                        <path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"></path>
+                    </svg>
+                </div>
+                <h2 class="card-title">Mode Interaktif</h2>
+                <p class="card-description">Input proses secara manual dengan memilih dependensi</p>
+                <p class="card-info">
+                    Cocok untuk pembelajaran dasar tentang manajemen proses konkruensi dan precedence graph.
+                </p>
+                <ul class="feature-list">
+                    <li><span class="check">✓</span> Input nama proses manual</li>
+                    <li><span class="check">✓</span> Pilih dependensi dari checkbox</li>
+                    <li><span class="check">✓</span> Visualisasi graph interaktif</li>
+                    <li><span class="check">✓</span> Simulasi konkruensi real-time</li>
+                    <li><span class="check">✓</span> Deteksi deadlock otomatis</li>
+                </ul>
+                <button class="btn btn-primary">Mulai Mode Interaktif</button>
+            </div>
+
+            <div class="card" onclick="window.location.href='statement-mode.html'">
+                <div class="card-icon statement-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                        <line x1="10" y1="9" x2="8" y2="9"></line>
+                    </svg>
+                </div>
+                <h2 class="card-title">Mode Statement</h2>
+                <p class="card-description">Input statement operasi dengan deteksi dependensi otomatis</p>
+                <p class="card-info">
+                    Cocok untuk analisis statement operasi kompleks dengan dependensi yang terdeteksi otomatis.
+                </p>
+                <ul class="feature-list">
+                    <li><span class="check">✓</span> Input statement (A = 1, B = A + 1)</li>
+                    <li><span class="check">✓</span> Deteksi dependensi otomatis</li>
+                    <li><span class="check">✓</span> Generate precedence graph</li>
+                    <li><span class="check">✓</span> Daftar statement dengan status</li>
+                    <li><span class="check">✓</span> Sub-mode manual juga tersedia</li>
+                </ul>
+                <button class="btn btn-primary">Mulai Mode Statement</button>
+            </div>
+        </div>
+
+         <!-- FOOTER -->
+        <footer class="footer">
+            <p>&copy; 2025 Simulasi Manajemen Konkruensi. Dibuat oleh kelompok 5  mata kuliah Sistem Operasi.</p>
+            <div class="footer-links">
+                <a href="#"><i class='bx bxl-facebook'></i></a>
+                <a href="#"><i class='bx bxl-twitter'></i></a>
+                <a href="#"><i class='bx bxl-github'></i></a>
+            </div>
+        </footer>
+    </div>
+     <script src="animasi.js"></script>
+</body>
+</html>
