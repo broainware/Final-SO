@@ -15,6 +15,7 @@
   --primary: #002a76;
   --light-border: rgba(0, 0, 0, 0);
   --shadow: rgba(0, 0, 0, 0.15);
+  --help: rgba(2, 0, 126, 0.795);
 }
 
 /* ------------------------------------------------------
@@ -30,6 +31,7 @@
     --primary: #002a76;
     --light-border: rgba(255, 255, 255, 0);
     --shadow: rgba(0, 0, 0, 0.4);
+    --help: rgba(255, 255, 255, 0.75);
   }
 }
 
@@ -49,7 +51,8 @@ body {
 ------------------------------------------------------ */
 .bg-animation {
   position: fixed;
-  inset: 0;
+  width: 100%;
+  height: 100%;
   background: linear-gradient(-45deg, #03204a, #002a76, #000000);
   background-size: 400% 400%;
   animation: gradientMove 12s ease infinite;
@@ -91,7 +94,7 @@ body {
 }
 
 /* TOMBOL TUTUP SIDEBAR BARU */
-.sidebar-close {
+.close-sidebar-btn {
   position: absolute;
   top: 15px;
   right: 15px;
@@ -100,11 +103,13 @@ body {
   cursor: pointer;
   font-size: 28px;
   color: var(--text-alt);
+  padding: 5px;
+  border-radius: 5px;
   transition: 0.3s;
 }
 
-.sidebar-close:hover {
-  color: var(--primary);
+.close-sidebar-btn:hover {
+  color: var(--text-alt);
   transform: scale(1.1);
 }
 
@@ -122,6 +127,7 @@ body {
   gap: 12px;
   padding: 12px 15px;
   margin-bottom: 8px;
+  font-size: 15px;
   color: var(--text-alt);
   text-decoration: none;
   border-radius: 8px;
@@ -151,14 +157,12 @@ body {
   cursor: pointer;
   font-size: 22px;
   color: var(--text);
+  font-size: 22px;
   z-index: 30;
   transition: 0.3s;
 }
 .toggle-btn:hover {
   transform: scale(1.1);
-}
-.toggle-btn svg {
-  display: block;
 }
 
 /*THEME BUTTON*/
@@ -215,6 +219,7 @@ body {
 }
 
 .hero-card {
+  text-align: left;
   display: flex;
   gap: 40px;
   color: var(--text);
@@ -223,7 +228,14 @@ body {
   border-radius: 20px;
   backdrop-filter: blur(12px);
   box-shadow: 0 0 25px var(--shadow);
-  max-width: 1000px;
+  max-width: 900px;
+  animation: floatCard 1s ease forwards;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.hero-card * {
+  text-align: left !important;
 }
 
 .hero-content {
@@ -232,6 +244,7 @@ body {
   align-items: center;
   justify-content: space-between;
   gap: 40px;
+  width: 100%;
 }
 
 .hero-text {
@@ -257,6 +270,9 @@ body {
   letter-spacing: 8px;
   background: linear-gradient(to right, var(--text-alt), var(--primary));
   -webkit-background-clip: text;
+  display: inline-block;
+  text-shadow: 0 0 10px var(--shadow);
+  transition: transform 0.2s ease-out;
 }
 
 .subtitle {
@@ -303,7 +319,7 @@ body {
 ------------------------------------------------------ */
 .materi-content {
   /* Padding atas dan bawah untuk memastikan konten tidak tertutup header */
-  padding: 100px 20px;
+  padding: 80px 40px;
   min-height: 100vh;
   text-align: center;
 }
@@ -364,16 +380,13 @@ body {
 
 /* CODE STYLES (untuk tag <pre><code>) */
 .materi-card pre {
-  background: var(--text-alt);
-  color: var(--bg); /* Teks terang di latar belakang gelap */
+  background: var(--card-bg);
+  color: var(--text-alt); /* Teks terang di latar belakang gelap */
   padding: 15px;
   border-radius: 8px;
   overflow-x: auto;
   margin: 20px 0;
   text-align: left;
-}
-.materi-card pre code {
-  display: block;
 }
 
 /* ------------------------------------------------------
@@ -528,7 +541,7 @@ body {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: var(--primary);
+  background: var(--help);
   color: var(--bg);
   border: none;
   padding: 12px;
@@ -536,12 +549,11 @@ body {
   z-index: 10;
   border-radius: 50%;
   box-shadow: 0 2px 10px var(--shadow);
-  transition: background-color 0.3s, transform 0.3s, opacity 0.3s;
 }
 
 .carousel-btn:hover:not(:disabled) {
   /* Asumsi --primary-hover ada, jika tidak, bisa diganti dengan warna solid */
-  background: color-mix(in srgb, var(--primary) 90%, black);
+  background: color-mix(in srgb, var(--help) 90%, var(--text-alt) 10%);
   transform: translateY(-50%) scale(1.05);
 }
 
@@ -745,68 +757,7 @@ FLOATING BUBBLES & SMALL GLOW PARTICLES
   }
 }
 
-/* ========== SKIP BUTTONS (HEADER + MAIN + VIDEO) ========== */
-
-/* HERO (header) quick buttons — absolute di dalam header */
-.hero {
-  position: relative; /* konteks untuk .hero-skip-wrap */
-}
-.hero-skip-wrap {
-  position: absolute;
-  top: 12px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 10px;
-  z-index: 120;
-  transition: opacity 220ms ease, transform 220ms ease, visibility 220ms;
-}
-
-/* Sticky wrappers for main & video (appear when section visible) */
-.main-skip-wrap,
-.video-skip-wrap {
-  position: sticky;
-  top: 12px;
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  z-index: 100;
-  margin: 0 auto 12px auto;
-  max-width: 1100px;
-  transition: opacity 220ms ease, transform 220ms ease, visibility 220ms;
-}
-
-/* Default hidden state for wrappers (JS/Observer toggles this) */
-.section-skip-hidden {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transform: translateY(-6px);
-}
-
-/* Tombol umum */
-.section-skip-btn {
-  display: inline-block;
-  padding: 10px 14px;
-  border-radius: 10px;
-  background: var(--card-bg);
-  color: var(--text);
-  font-weight: 600;
-  text-decoration: none;
-  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.18);
-  transition: transform 0.18s ease, box-shadow 0.18s ease, opacity 0.2s;
-  border: 2px solid transparent;
-}
-
-/* Tombol ukuran kecil (sticky wrappers) */
-.section-skip-btn.small {
-  padding: 8px 12px;
-  font-size: 14px;
-  border-radius: 8px;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
-}
-
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
 
 /* Help Bubble */
 #help-bubble {
@@ -815,24 +766,24 @@ FLOATING BUBBLES & SMALL GLOW PARTICLES
   right: 30px;
   width: 52px;
   height: 52px;
-  background-color: #0a276d;
-  color: #ffffff;
+  background-color: var(--bg);
+  color: var(--help);
   font-size: 30px;
   font-weight: 700;
   border-radius: 50%;
-  box-shadow: 0 5px 14px rgba(10, 39, 109, 0.7);
+  box-shadow: 0 5px 14px var(--shadow);
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   user-select: none;
   transition: background-color 0.3s ease, transform 0.3s ease;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   z-index: 10010;
 }
 #help-bubble:hover,
 #help-bubble:focus {
-  background-color: #143c9a;
+  background-color: var(--card-bg);
   transform: scale(1.15);
   outline: none;
 }
@@ -843,12 +794,12 @@ FLOATING BUBBLES & SMALL GLOW PARTICLES
   bottom: 90px;
   right: 30px;
   width: 320px;
-  background-color: #0a276d;
+  background-color: var(--bg);
   border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(10, 39, 109, 0.85);
+  box-shadow: 0 10px 30px var(--shadow);
   padding: 28px 28px 32px 28px;
-  color: #cee1ff;
-  font-family: 'Poppins', sans-serif;
+  color: var(--text-alt);
+  font-family: "Poppins", sans-serif;
   font-size: 1rem;
   line-height: 1.6;
   opacity: 0;
@@ -870,7 +821,7 @@ FLOATING BUBBLES & SMALL GLOW PARTICLES
   right: 16px;
   background: transparent;
   border: none;
-  color: #bdd9ff;
+  color: var(--help);
   font-size: 24px;
   cursor: pointer;
   transition: color 0.25s ease;
@@ -878,7 +829,7 @@ FLOATING BUBBLES & SMALL GLOW PARTICLES
 }
 #help-close:hover,
 #help-close:focus {
-  color: #ffffff;
+  color: var(--text-alt);
   outline: none;
 }
 
@@ -889,7 +840,7 @@ FLOATING BUBBLES & SMALL GLOW PARTICLES
   font-weight: 600;
   font-size: 1.3rem;
   letter-spacing: 0.05em;
-  text-shadow: 0 0 4px rgba(255,255,255,0.2);
+  text-shadow: 0 0 4px var(--shadow);
 }
 
 /* List style */
@@ -900,15 +851,7 @@ FLOATING BUBBLES & SMALL GLOW PARTICLES
 #help-popup ul li {
   margin-bottom: 12px;
   list-style-type: disc;
-  color: #cddff8;
-}
-
-/* Hover & focus */
-.section-skip-btn:hover,
-.section-skip-btn:focus {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
-  outline: none;
+  color: var(--text-alt);
 }
 
 /* Jika butuh tombol header lebih kecil di mobile */
