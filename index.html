@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="id">
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
-    <title>Simulasi Manajemen Proses Konkruensi</title>
-    
-    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
 
+    <title>Simulasi Manajemen Proses Konkruensi</title>
+
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <!-- ANIMATED BACKGROUND -->
     <div class="bg-animation"></div>
 
@@ -20,37 +22,71 @@
 
     <!-- SIDEBAR -->
     <aside id="sidebar" class="sidebar">
-        <button
+      <button
         id="closeSidebarBtn"
         class="close-sidebar-btn"
-        aria-label="Tutup Menu">
-            <i class="bx bx-x"></i>
-        </button>
-        <h2 class="side-title">MENU</h2>
+        aria-label="Tutup Menu"
+      >
+        <i class="bx bx-x"></i>
+      </button>
+      <h2 class="side-title">MENU</h2>
 
-            <!--Tambah Navbar-->
-        <nav class="side-nav">
+      <!--Tambah Navbar-->
+      <nav class="side-nav">
         <a href="index.html" class="side-link active">
-            <i class="bx bx-home"></i> Beranda
+          <i class="bx bx-home"></i> Beranda
         </a>
         <a href="materi.html" class="side-link">
-            <i class="bx bx-book"></i> Materi
+          <i class="bx bx-book"></i> Materi
         </a>
         <a href="simulasi.html" class="side-link">
-            <i class="bx bx-cog"></i> Simulasi
+          <i class="bx bx-cog"></i> Simulasi
         </a>
         <a href="Tentang kami.html" class="side-link">
-            <i class="bx bx-info-circle"></i> Tentang Kami
+          <i class="bx bx-info-circle"></i> Tentang Kami
         </a>
-        </nav>
+      </nav>
     </aside>
 
     <!-- TOGGLE SIDEBAR BUTTON -->
-    <button id="toggleBtn" class="toggle-btn">
-        <i class="bx bx-menu"></i>
+    <button
+      id="toggleBtn"
+      class="toggle-btn"
+      aria-label="Buka Menu navigasi"
+      aria-controls="sidebar"
+      aria-expanded="false"
+    >
+      <svg
+        class="icon"
+        viewBox="0 0 24 24"
+        width="24"
+        height="24"
+        aria-hidden="true"
+      >
+        <path
+          d="M3 6h18M3 12h18M3 18h18"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+        />
+      </svg>
+      <!-- Ganti-->
     </button>
-    
-  
+
+    <!-- TOGGLE THEME BUTTON -->
+    <button
+      id="themeToggle"
+      class="theme-btn"
+      aria-label="Aktifkan Mode Gelap"
+      aria-pressed="false"
+    >
+      <svg
+        class="icon"
+        viewBox="0 0 24 24"
+        width="24"
+        height="24"
+        aria-hidden="true"
+      >
         <path
           d="M21 12.79A9 9 0 0 1 11.21 3 7 7 0 1 0 12 21a9 9 0 0 0 9-8.21z"
           fill="currentColor"
@@ -83,81 +119,107 @@
     </button>
 
     <!-- HERO CONTENT -->
-   <header class="hero">
-    <div class="hero-card">
+    <header class="hero">
+      <div class="hero-card">
         <div class="hero-content">
-            <div class="hero-text">
-                <h1 class="title floating">SIMULASI</h1>
-                <h2 class="subtitle">MANAJEMEN PROSES</h2>
-                <h2 class="subtitle">KONKURENSI</h2>
+          <div class="hero-text">
+            <h1 class="title floating">SIMULASI</h1>
+            <h2 class="subtitle">MANAJEMEN PROSES</h2>
+            <h2 class="subtitle">KONKURENSI</h2>
 
-                <p class="desc"> Website ini mensimulasikan cara sistem operasi menjalankan proses secara concurrent, dilengkapi penjelasan materi sebagai pengantar sebelum simulasi dimulai.
-                </p>
+            <p class="desc">
+              Website ini mensimulasikan cara sistem operasi menjalankan proses
+              secara concurrent, dilengkapi penjelasan materi sebagai pengantar
+              sebelum simulasi dimulai.
+            </p>
 
-                <div class="btn-group">
-                    <a href="materi.html" class="btn">PAHAMI KONSEP</a>
-                    <a href="simulasi.html" class="btn btn-alt">MULAI SIMULASI</a>
-                </div>
+            <div class="btn-group">
+              <a href="materi.html" class="btn">PAHAMI KONSEP</a>
+              <a href="simulasi.html" class="btn btn-alt">MULAI SIMULASI</a>
             </div>
+          </div>
 
-            <div class="hero-img">
-                <img src="illustration.png" alt="Ilustrasi PNG">
-            </div>
+          <div class="hero-img">
+            <img src="illustration.png" alt="Ilustrasi PNG" />
+          </div>
         </div>
-
-    </div>
-</header>
-
+      </div>
+    </header>
 
     <!-- FITUR UTAMA SECTION -->
     <main class="features">
-        <h2 class="features-title">FITUR UTAMA SIMULASI</h2>
-        <section class="features-grid">
-            <article class="feature-card">
-                <i class='bx bx-play-circle'></i>
-                <h3>Urutan Eksekusi</h3>
-                <p>Lihat bagaimana proses berjalan secara paralel atau berurutan dengan visualisasi waktu nyata.</p>
-            </article>
-            <article class="feature-card">
-                <i class='bx bx-bar-chart-alt-2'></i>
-                <h3>Perbandingan Waktu Sequential vs Concurrent</h3>
-                <p>Bandingkan efisiensi antara eksekusi berurutan dan konkuren melalui grafik interaktif.</p>
-            </article>
-            <article class="feature-card">
-                <i class='bx bx-network-chart'></i>
-                <h3>Precedence Graph</h3>
-                <p>Visualisasikan dependensi antar proses dengan grafik precedence yang mudah dipahami.</p>
-            </article>
-        </section>
+      <h2 class="features-title">FITUR UTAMA SIMULASI</h2>
+      <section class="features-grid">
+        <article class="feature-card">
+          <i class="bx bx-play-circle"></i>
+          <h3>Urutan Eksekusi</h3>
+          <p>
+            Lihat bagaimana proses berjalan secara paralel atau berurutan dengan
+            visualisasi waktu nyata.
+          </p>
+        </article>
+        <article class="feature-card">
+          <i class="bx bx-bar-chart-alt-2"></i>
+          <h3>Perbandingan Waktu Sequential vs Concurrent</h3>
+          <p>
+            Bandingkan efisiensi antara eksekusi berurutan dan konkuren melalui
+            grafik interaktif.
+          </p>
+        </article>
+        <article class="feature-card">
+          <i class="bx bx-network-chart"></i>
+          <h3>Precedence Graph</h3>
+          <p>
+            Visualisasikan dependensi antar proses dengan grafik precedence yang
+            mudah dipahami.
+          </p>
+        </article>
+      </section>
     </main>
 
     <!-- FOOTER -->
     <footer class="footer">
-        <p>&copy; 2025 Simulasi Manajemen Konkruensi. Dibuat oleh kelompok 5  mata kuliah Sistem Operasi.</p>
-        <div class="footer-links">
-            <a href="#"><i class='bx bxl-facebook'></i></a>
-            <a href="#"><i class='bx bxl-twitter'></i></a>
-            <a href="#"><i class='bx bxl-github'></i></a>
-        </div>
+      <p>
+        &copy; 2025 Simulasi Manajemen Konkruensi. Dibuat oleh kelompok 5 mata
+        kuliah Sistem Operasi.
+      </p>
+      <div class="footer-links">
+        <a href="#"><i class="bx bxl-facebook"></i></a>
+        <a href="#"><i class="bx bxl-twitter"></i></a>
+        <a href="#"><i class="bx bxl-github"></i></a>
+      </div>
     </footer>
 
+    <!--Bantuan menggunakan Website-->
     <!-- Help Bubble -->
-<div id="help-bubble" aria-label="Tombol bantuan" role="button" tabindex="0">?</div>
+    <div
+      id="help-bubble"
+      aria-label="Tombol bantuan"
+      role="button"
+      tabindex="0"
+    >
+      ?
+    </div>
 
-<!-- Help Popup -->
-<div id="help-popup" role="dialog" aria-modal="true" aria-labelledby="help-title" aria-hidden="true">
-  <button id="help-close" aria-label="Tutup bantuan">&times;</button>
-  <h3 id="help-title">Cara Memulai Simulasi</h3>
-  <ul>
-    <li>Buka halaman simulasi.</li>
-    <li>Masukkan nama proses dan durasinya.</li>
-    <li>(Opsional) Tambahkan dependency antar proses.</li>
-    <li>Klik Tambahkan Proses.</li>
-    <li>Jika semua proses sudah benar, klik Mulai Simulasi.</li>
-  </ul>
-</div>
+    <!-- Help Popup -->
+    <div
+      id="help-popup"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="help-title"
+      aria-hidden="true"
+    >
+      <button id="help-close" aria-label="Tutup bantuan">&times;</button>
+      <h3 id="help-title">Cara Memulai Simulasi</h3>
+      <ul>
+        <li>Buka halaman simulasi.</li>
+        <li>Masukkan nama proses dan durasinya.</li>
+        <li>(Opsional) Tambahkan dependency antar proses.</li>
+        <li>Klik Tambahkan Proses.</li>
+        <li>Jika semua proses sudah benar, klik Mulai Simulasi.</li>
+      </ul>
+    </div>
 
-<script src="script.js"></script>
-
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
