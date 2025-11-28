@@ -3,7 +3,7 @@
 ========================================================== */
 const sidebar = document.getElementById("sidebar");
 const toggleBtn = document.getElementById("toggleBtn");
-const closeSidebarBtn = document.getElementById("closeSidebar"); // Tambah
+const closeSidebarBtn = document.getElementById("closeSidebarBtn"); // Tambah
 
 toggleBtn.addEventListener("click", () => {
   sidebar.classList.toggle("open");
@@ -17,25 +17,25 @@ closeSidebarBtn.addEventListener("click", () => {
   toggleBtn.setAttribute("aria-expanded", "false");
 });
 
-const helpBubble = document.getElementById('help-bubble');
-const helpPopup = document.getElementById('help-popup');
-const helpClose = document.getElementById('help-close');
+const helpBubble = document.getElementById("help-bubble");
+const helpPopup = document.getElementById("help-popup");
+const helpClose = document.getElementById("help-close");
 
-helpBubble.addEventListener('click', () => {
-  helpPopup.classList.toggle('show');
+helpBubble.addEventListener("click", () => {
+  helpPopup.classList.toggle("show");
 });
 
-helpClose.addEventListener('click', () => {
-  helpPopup.classList.remove('show');
+helpClose.addEventListener("click", () => {
+  helpPopup.classList.remove("show");
 });
 
-window.addEventListener('click', (e) => {
+window.addEventListener("click", (e) => {
   if (
-    helpPopup.classList.contains('show') &&
+    helpPopup.classList.contains("show") &&
     !helpPopup.contains(e.target) &&
     e.target !== helpBubble
   ) {
-    helpPopup.classList.remove('show');
+    helpPopup.classList.remove("show");
   }
 });
 
@@ -159,7 +159,9 @@ function updateVideoCarousel() {
 
   // 3. Update button states (Enable/Disable)
   prevBtn.disabled = currentVideoIndex === 0;
+  prevBtn.disabled = false; // Selalu aktifkan prevBtn untuk loop
   nextBtn.disabled = currentVideoIndex === videoSlides.length - 1;
+  nextBtn.disabled = false; // Selalu aktifkan nextBtn untuk loop
 
   // 4. Update aria-live status (Accessibility)
   if (carouselContainer) {
@@ -175,14 +177,20 @@ nextBtn.addEventListener("click", () => {
   if (currentVideoIndex < videoSlides.length - 1) {
     currentVideoIndex++;
     updateVideoCarousel();
+  } else {
+    currentVideoIndex = 0; // kembali ke slide pertama
   }
+  updateVideoCarousel();
 });
 
 prevBtn.addEventListener("click", () => {
   if (currentVideoIndex > 0) {
     currentVideoIndex--;
     updateVideoCarousel();
+  } else {
+    currentVideoIndex = videoSlides.length - 1; // kembali ke terakhir
   }
+  updateVideoCarousel();
 });
 
 // Panggilan awal untuk mengatur slide pertama
@@ -251,29 +259,4 @@ document.addEventListener("DOMContentLoaded", () => {
     }, opts);
     videoObs.observe(videoSection);
   }
-
-  // Klik semua tombol: fokus target & sembunyikan wrapper sumber supaya tidak menghalangi
-  document.querySelectorAll(".section-skip-btn").forEach((btn) => {
-    btn.addEventListener("click", (e) => {
-      const href = btn.getAttribute("href");
-      if (!href || !href.startsWith("#")) return;
-      const id = href.slice(1);
-      const target = document.getElementById(id);
-
-      // hide the wrap containing this button (so it won't block the view)
-      const wrap = btn.closest(
-        ".hero-skip-wrap, .main-skip-wrap, .video-skip-wrap"
-      );
-      if (wrap) hide(wrap);
-
-      if (target) {
-        if (!target.hasAttribute("tabindex"))
-          target.setAttribute("tabindex", "-1");
-        // delay sedikit biar scroll selesai, lalu fokus
-        setTimeout(() => {
-          target.focus({ preventScroll: true });
-        }, 220);
-      }
-    });
-  });
 });
